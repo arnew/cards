@@ -1,0 +1,114 @@
+%%%
+%
+% ticket.sty example file for flashcards for word learning
+%
+%%%%
+% use the corresponding paper size for your ticket definition
+\documentclass[a4paper,10pt]{letter}
+
+\usepackage[stratego,cutmark]{ticket}
+\usepackage{graphicx}  % load misc stuff
+\usepackage{syntonly}  %to test without output
+
+\usepackage{yfonts}[1998/10/03]  % LaTeX interface to the blackletter (old german) fonts designed by Yannis Haralambous:  Gotisch, Schwabacher, Fraktur and the baroque initials. \textgoth{...}, \textswab{...},  \textfrak{...} and  \textinit{...} \gothfamily, \swabfamily, \frakfamily and \initfamily
+
+\usepackage{fancybox}
+\usepackage{rotating}
+
+\usepackage{ifthen}
+
+\usepackage[utf8]{inputenc}
+
+\newcommand{\wb}[2]{\fontsize{#1}{#2}\usefont{U}{webo}{xl}{n}}
+% make your default ticket. \ticketdefault is somewhat like a background
+\newcommand{\ticketdefaultfront}{%no background
+\setlength{\unitlength}{1mm}%
+%\put(0,0){\framebox(65,100){}}
+%\put(5,5){\framebox(55,90){}}
+\put(0,0){{\wb{5mm}{5mm}%
+\put(0,95){r}%                       Upper left corner
+\multiput(5,95)(5,0){11}{s}%       Upper border
+\put(60,95){t}%                     Upper right corner
+\multiput(0,90)(0,-5){18}{x}%     Left border
+\put(0,0){u}%                    Lower left corner
+\multiput(5,0)(5,0){11}{v}%    Lower border
+\put(60,0){w}%                  Lower right corner
+\multiput(60,90)(0,-5){18}{y}%   Right border
+}}%
+}
+
+\newcommand{\ticketdefaultback}{
+\setlength{\unitlength}{1mm}%
+%\put(0,0){\framebox(65,100){}}
+%\put(5,5){\framebox(55,90){}}
+\put(0,0){{\wb{4mm}{4mm}%
+\put(0,95){M}%                       Upper left corner
+\multiput(5,95)(5,0){11}{N}%       Upper border
+\put(60,95){O}%                     Upper right corner
+\multiput(0,90)(0,-5){18}{S}%     Left border
+\put(0,0){O}%                    Lower left corner
+\multiput(5,0)(5,0){11}{Q}%    Lower border
+\put(60,0){R}%                  Lower right corner
+\multiput(60,90)(0,-5){18}{T}%   Right border
+}}%
+}
+
+% \strategocard{% staerker:
+% }{% eigener rang:
+% }{% schwaecher:
+% }{% hinweise
+% }{}
+
+\newcommand{\strategocardfront}[5]{\ticket{% front
+\put(5,5){\makebox(55,90){%
+\begin{minipage}{55mm}%
+\begin{center}%
+%\vspace{\fill}%
+\textswab{%
+#1%
+\vspace{5mm}%
+{\huge{\textbf{#2}}}\\%
+\vspace{5mm}%
+#3%
+}%
+%\vspace{\fill}%
+\end{center}%
+\end{minipage}%
+}}%
+}%
+}
+
+\newcommand{\strategocardback}[5]{%
+\ticket{%
+\put(5,5){\makebox(55,90){%
+\begin{minipage}{55mm}%
+%\hspace{\fill}%
+\begin{center}
+\begin{sideways}
+\begin{center}
+{\huge{\textswab{\textinit#2}}}%
+\end{center}
+\end{sideways}
+\end{center}
+%\hspace{\fill}%
+\end{minipage}%
+}%
+}%
+}
+}
+
+
+
+
+%% you can generate this part from a database!
+\begin{document}
+\newcommand{\strategocard}[5]{\strategocardfront{#1}{#2}{#3}{#4}{#5}}
+\renewcommand{\ticketdefault}{\ticketdefaultfront}
+\input{data}
+
+\backside%
+\oddsidemargin=0mm
+\renewcommand{\strategocard}[5]{\strategocardback{#1}{#2}{#3}{#4}{#5}}
+\renewcommand{\ticketdefault}{\ticketdefaultback}
+\input{data}
+\end{document}
