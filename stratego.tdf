@@ -1,7 +1,7 @@
 
 \unitlength=1mm
-\hoffset=0mm
+\hoffset=4.6mm
 \voffset=0mm
 \ticketNumbers{2}{2}
 \ticketSize{65}{100}
-\ticketDistance{16}{16}
+\ticketDistance{20}{20}

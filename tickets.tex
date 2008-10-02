@@ -23,34 +23,34 @@
 % make your default ticket. \ticketdefault is somewhat like a background
 \newcommand{\ticketdefaultfront}{%no background
 \setlength{\unitlength}{1mm}%
-%\put(0,0){\framebox(65,100){}}
-%\put(5,5){\framebox(55,90){}}
-\put(0,0){{\wb{5mm}{5mm}%
+\put(0,0){\framebox(65,100){}}
+\put(5,5){\framebox(55,90){}}
+\put(0,0){{\wb{10mm}{10mm}%
 \put(0,95){r}%                       Upper left corner
-\multiput(5,95)(5,0){11}{s}%       Upper border
+\multiput(5,95)(10,0){1}{s}%       Upper border
 \put(60,95){t}%                     Upper right corner
-\multiput(0,90)(0,-5){18}{x}%     Left border
+\multiput(0,90)(0,-10){1}{x}%     Left border
 \put(0,0){u}%                    Lower left corner
-\multiput(5,0)(5,0){11}{v}%    Lower border
+\multiput(5,0)(10,0){1}{v}%    Lower border
 \put(60,0){w}%                  Lower right corner
-\multiput(60,90)(0,-5){18}{y}%   Right border
+\multiput(60,90)(0,-10){1}{y}%   Right border
 }}%
 }
 
 \newcommand{\ticketdefaultback}{
-\setlength{\unitlength}{1mm}%
-%\put(0,0){\framebox(65,100){}}
-%\put(5,5){\framebox(55,90){}}
-\put(0,0){{\wb{4mm}{4mm}%
-\put(0,95){M}%                       Upper left corner
-\multiput(5,95)(5,0){11}{N}%       Upper border
-\put(60,95){O}%                     Upper right corner
-\multiput(0,90)(0,-5){18}{S}%     Left border
-\put(0,0){O}%                    Lower left corner
-\multiput(5,0)(5,0){11}{Q}%    Lower border
-\put(60,0){R}%                  Lower right corner
-\multiput(60,90)(0,-5){18}{T}%   Right border
-}}%
+%\setlength{\unitlength}{1mm}%
+%%\put(0,0){\framebox(65,100){}}
+%%\put(5,5){\framebox(55,90){}}
+%\put(0,0){{\wb{4mm}{4mm}%
+%\put(0,95){M}%                       Upper left corner
+%\multiput(5,95)(5,0){11}{N}%       Upper border
+%\put(60,95){O}%                     Upper right corner
+%\multiput(0,90)(0,-5){18}{S}%     Left border
+%\put(0,0){O}%                    Lower left corner
+%\multiput(5,0)(5,0){11}{Q}%    Lower border
+%\put(60,0){R}%                  Lower right corner
+%\multiput(60,90)(0,-5){18}{T}%   Right border
+%}}%
 }
 
 % \strategocard{% staerker:
@@ -67,34 +67,33 @@
 \textswab{%
 #1%
 \vspace{5mm}%
-{\huge{\textbf{#2}}}\\%
+{\huge{#2}}\\%
 \vspace{5mm}%
 #3%
+\vspace{10mm}%
+#4%
 }%
-%\vspace{\fill}%
+\footnotesize{#5}%
 \end{center}%
 \end{minipage}%
 }}%
 }%
 }
 
+\newcommand{\makeinitial}[1]{{\textinit#1}}
 \newcommand{\strategocardback}[5]{%
 \ticket{%
 \put(5,5){\makebox(55,90){%
 \begin{minipage}{55mm}%
-%\hspace{\fill}%
-\begin{center}
-\begin{sideways}
-\begin{center}
+\begin{center}%
+\begin{sideways}%
 {\huge{\textswab{\textinit#2}}}%
-\end{center}
-\end{sideways}
-\end{center}
-%\hspace{\fill}%
+\end{sideways}%
+\end{center}%
 \end{minipage}%
 }%
 }%
-}
+}%
 }
 
 

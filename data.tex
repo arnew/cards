@@ -1,3 +1,23 @@
+%
+\strategocard{% staerker:
+Bombe\\
+Feldmarschall\\
+}{% eigener rang:
+General
+}{% schwaecher:
+Oberst\\
+Major\\
+Hauptmann\\
+Minör\\
+Leutnant\\
+Spion\\
+Unteroffizier\\
+Fahne\\
+}{
+}{
+}
+%
+%
 \strategocard{% staerker:
 }{% eigener rang:
 Fahne
@@ -5,7 +25,10 @@ Fahne
 }{% hinweise
 Darf nicht gefangen werden!  Ziel von Stratego ist, die Fahne des Gegners zu
 ergattern.  Sei auf der Hut!  Dich kann jeder schlagen!
-}{}
+}{
+1 maximal
+}
+%
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
@@ -20,7 +43,11 @@ Spion
 Minör\\
 Unteroffizier\\
 Fahne\\
-}{}{}
+}{
+Kann die Gefangenen im gegnerischen Lager befreien.
+}{
+2 mindestens
+}
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
@@ -28,15 +55,19 @@ General\\
 Oberst\\
 Major\\
 Hauptmann\\
-Minör\\
+Leutnant\\
 }{% eigener rang:
-Leutnant
+Spion
 }{% schwaecher:
-Spion\\
+Minör\\
 Unteroffizier\\
 Fahne\\
-}{% hinweise
-}{}
+}{
+Kann die Gefangenen im gegnerischen Lager befreien.
+}{
+2 mindestens
+}
+%
 \strategocard{% staerker:
 Minör\\
 }{% eigener rang:
@@ -52,23 +83,8 @@ Spion\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{}
-\strategocard{% staerker:
-Bombe\\
-Feldmarschall\\
-}{% eigener rang:
-General
-}{% schwaecher:
-Oberst\\
-Major\\
-Hauptmann\\
-Minör\\
-Leutnant\\
-Spion\\
-Unteroffizier\\
-Fahne\\
-}{% hinweise
-}{}
+}{1:1 mit Minör}
+%
 \strategocard{% staerker:
 Feldmarschall\\
 General\\
@@ -84,55 +100,9 @@ Leutnant\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{}
-\strategocard{% staerker:
-Bombe\\
-Unteroffizier\\
-}{% eigener rang:
-Feldmarschall
-}{% schwaecher:
-General\\
-Oberst\\
-Major\\
-Hauptmann\\
-Minör\\
-Leutnant\\
-Spion\\
-Fahne\\
-}{% hinweise
-}{}
-\strategocard{% staerker:
-Bombe\\
-Feldmarschall\\
-General\\
-}{% eigener rang:
-Oberst
-}{% schwaecher:
-Major\\
-Hauptmann\\
-Minör\\
-Leutnant\\
-Spion\\
-Unteroffizier\\
-Fahne\\
-}{% hinweise
-}{}
-\strategocard{% staerker:
-Bombe\\
-Feldmarschall\\
-General\\
-Oberst\\
-Major\\
-}{% eigener rang:
-Hauptmann
-}{% schwaecher:
-Minör\\
-Leutnant\\
-Spion\\
-Unteroffizier\\
-Fahne\\
-}{% hinweise
-}{}
+}{1:1 mit Bombe}
+%
+%
 \strategocard{% staerker:
 Bombe\\
 General\\
@@ -148,7 +118,43 @@ Unteroffizier
 Feldmarschall\\
 Fahne\\
 }{% hinweise
-}{}
+}{1:1 mit Feldmarschall}
+%
+\strategocard{% staerker:
+Bombe\\
+Unteroffizier\\
+}{% eigener rang:
+Feldmarschall
+}{% schwaecher:
+General\\
+Oberst\\
+Major\\
+Hauptmann\\
+Minör\\
+Leutnant\\
+Spion\\
+Fahne\\
+}{% hinweise
+}{1:1 mit Unteroffizier}
+%
+%
+%
+\strategocard{% staerker:
+Bombe\\
+Feldmarschall\\
+General\\
+}{% eigener rang:
+Oberst
+}{% schwaecher:
+Major\\
+Hauptmann\\
+Minör\\
+Leutnant\\
+Spion\\
+Unteroffizier\\
+Fahne\\
+}{% hinweise
+}{evtl. nicht besetzen}
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
@@ -164,7 +170,23 @@ Spion\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{}
+}{evtl. nicht besetzen}
+\strategocard{% staerker:
+Bombe\\
+Feldmarschall\\
+General\\
+Oberst\\
+Major\\
+}{% eigener rang:
+Hauptmann
+}{% schwaecher:
+Minör\\
+Leutnant\\
+Spion\\
+Unteroffizier\\
+Fahne\\
+}{% hinweise
+}{evtl. nicht besetzen}
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
@@ -172,12 +194,12 @@ General\\
 Oberst\\
 Major\\
 Hauptmann\\
-Leutnant\\
-}{% eigener rang:
-Spion
-}{% schwaecher:
 Minör\\
+}{% eigener rang:
+Leutnant
+}{% schwaecher:
+Spion\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{}
+}{evtl. nicht besetzen}
