@@ -4,7 +4,8 @@
 %
 %%%%
 % use the corresponding paper size for your ticket definition
-\documentclass[a4paper,10pt]{letter}
+\documentclass[a4paper,10pt,oneside]{letter}
+
 
 \usepackage[stratego,cutmark]{ticket}
 \usepackage{graphicx}  % load misc stuff
@@ -38,19 +39,29 @@
 }
 
 \newcommand{\ticketdefaultback}{
-%\setlength{\unitlength}{1mm}%
-%%\put(0,0){\framebox(65,100){}}
-%%\put(5,5){\framebox(55,90){}}
-%\put(0,0){{\wb{4mm}{4mm}%
-%\put(0,95){M}%                       Upper left corner
-%\multiput(5,95)(5,0){11}{N}%       Upper border
-%\put(60,95){O}%                     Upper right corner
-%\multiput(0,90)(0,-5){18}{S}%     Left border
-%\put(0,0){O}%                    Lower left corner
-%\multiput(5,0)(5,0){11}{Q}%    Lower border
-%\put(60,0){R}%                  Lower right corner
-%\multiput(60,90)(0,-5){18}{T}%   Right border
-%}}%
+\setlength{\unitlength}{1mm}%
+\put(0,0){{%
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{maeander}{n}%
+\put(0,95){LCDCDCDCDCDCH}%       Upper border
+\multiput(0,90)(0,-10){9}{A}%     Left border
+\multiput(0,85)(0,-10){9}{B}%     Left border
+\put(0,0){PDCDCDCDCDCDT}%       Upper border
+\multiput(60,90)(0,-10){9}{A}%     Left border
+\multiput(60,85)(0,-10){9}{B}%     Left border
+}}%
+\put(5,5){{%
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{floor}{n}%
+\multiput(0,0)(0,10){9}{AB}%       Upper border
+\multiput(0,5)(0,10){9}{BA}%       Upper border
+\multiput(45,0)(0,10){9}{BA}%       Upper border
+\multiput(45,5)(0,10){9}{AB}%       Upper border
+\put(10,0){ABABABA}%       Upper border
+\put(10,5){BABABAB}%       Upper border
+\put(10,80){ABABABA}%       Upper border
+\put(10,85){BABABAB}%       Upper border
+}}%
 }
 
 % \strategocard{% staerker:
@@ -64,16 +75,16 @@
 \begin{minipage}{55mm}%
 \begin{center}%
 %\vspace{\fill}%
-\textswab{%
+\textswab{\fontsize{0.5cm}{0.5cm}\selectfont%
 #1%
 \vspace{5mm}%
-{\huge{#2}}\\%
+{\fontsize{1.5cm}{1.5cm}\selectfont{#2}}\\%
 \vspace{5mm}%
 #3%
 \vspace{10mm}%
 #4%
 }%
-\footnotesize{#5}%
+%\footnotesize{#5}%
 \end{center}%
 \end{minipage}%
 }}%
@@ -83,7 +94,7 @@
 \newcommand{\makeinitial}[1]{{\textinit#1}}
 \newcommand{\strategocardback}[5]{%
 \ticket{%
-\put(5,5){\makebox(55,90){%
+\put(15,15){\framebox(35,70){%
 \begin{minipage}{55mm}%
 \begin{center}%
 \begin{sideways}%
@@ -106,7 +117,7 @@
 \input{data}
 
 \backside%
-\oddsidemargin=0mm
+\oddsidemargin=9.5mm
 \renewcommand{\strategocard}[5]{\strategocardback{#1}{#2}{#3}{#4}{#5}}
 \renewcommand{\ticketdefault}{\ticketdefaultback}
 \input{data}

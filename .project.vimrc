@@ -7,7 +7,10 @@
 "
 "
 "let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
-"let g:Tex_FormatDependency_ps = 'dvi,ps,pdf'
+"let g:Tex_FormatDependency_pdf = 'dvi,ps,pdf'
 "
 let g:Tex_DefaultTargetFormat = 'pdf'
+"let g:Tex_CompileRule_ps = 'pdf2ps $*.pdf'
+"let g:Tex_FormatDependency_ps = 'pdf,ps'
+"
 "let g:Tex_DefaultTargetFormat = 'ps'
