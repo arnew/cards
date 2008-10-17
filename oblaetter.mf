@@ -1,0 +1,187 @@
+%
+% This work is licensed under the Creative Commons
+% Attribution-Noncommercial-Share Alike 3.0 Germany License. To view a copy of
+% this license, visit http://creativecommons.org/licenses/by-nc-sa/3.0/de/ or
+% send a letter to Creative Commons, 171 Second Street, Suite 300, San
+% Francisco, California, 94105, USA.
+%
+% CC by-nc-sa; 2008 by Arne Wichmann
+%              2008 by Gesche Jonas
+%
+if unknown obase: input obase fi
+
+msize#:=14pt#;
+font_size=msize#; % make the pxl or pk files be in ...\pixel\pxl1500
+u#:=1/6*msize#;
+
+mode_setup;
+
+define_pixels(u);
+
+code:=64;
+n:=0;
+
+pair bbox;
+bbox=(6,6);
+
+picture buf;
+picture ll;
+
+pickup pencircle scaled 1/2pt;
+defaultpen := savepen;
+
+def defaultpoints = 
+	pair ll,lr,ul,ur;
+	ll := origin;
+	lr := (w,0);
+	ul := (0,h);
+	ur := (w,h);
+
+	pair center; center=0.5[origin,(w,h)];
+
+	z101=(0,h/2);
+	z102=(w,h/2);
+	labels (range 101 thru 102);
+	labels (ll,lr,ul,ur,center);
+enddef;
+
+
+def blatttypeins (expr orig,arc,center,tip,blattansatz,rippenlaenge,stuetza,stuetzb,stuetzwa,stuetzwb) =
+	path rippe;
+	pair n[];
+
+	pickup defaultpen;
+
+	z1 = orig; z2 = center; z3 = tip;
+	rippe := z1{arc} .. z2 .. z3;
+
+	numeric blen; blen := 1-blattansatz;
+
+	z4 = point blattansatz*length(rippe) of rippe;
+
+	z5 = point (stuetza*blen+blattansatz)*length(rippe) of rippe;
+	n5 = dir(90+angle(direction (stuetza*blen+blattansatz)*length(rippe) of rippe));
+
+	z6 = point (stuetzb*blen+blattansatz)*length(rippe) of rippe;
+	n6 = dir(90 + angle(direction (stuetzb*blen+blattansatz)*length(rippe) of rippe));
+
+	z10 = z5 + stuetzwa*n5*blen/2*length(z3-z4);
+	z11 = z5 - stuetzwa*n5*blen/2*length(z3-z4);
+	z12 = z6 + stuetzwb*n6*blen/2*length(z3-z4);
+	z13 = z6 - stuetzwb*n6*blen/2*length(z3-z4);
+
+	draw subpath (0,(rippenlaenge*blen+blattansatz)*length(rippe)) of rippe;
+
+	draw z4 .. z10 .. z12 .. z3;
+	draw z4 .. z11 .. z13 .. z3;
+
+	labels (range 1 thru 99);
+
+enddef;
+
+def blatteins (expr orig,arc,center,tip) =
+	numeric blattansatz,rippenlaenge;
+	numeric stuetz[], stuetzw[];
+
+	blattansatz = 3/8;
+	rippenlaenge = 2/4;
+	stuetz1 = 1/4;
+	stuetz2 = 2/4;
+	stuetzw1 = 1;
+	stuetzw2 = 2/3;
+
+	blatttypeins (orig,arc,center,tip,blattansatz,rippenlaenge,stuetz1,stuetz2,stuetzw1,stuetzw2);
+
+enddef;
+
+def blattzwei (expr orig,arc,center,tip) =
+	numeric blattansatz,rippenlaenge;
+	numeric stuetz[], stuetzw[];
+
+	blattansatz = 3/8;
+	rippenlaenge = 2/4;
+	stuetz1 = 0/4;
+	stuetz2 = 2/4;
+	stuetzw1 = 1;
+	stuetzw2 = 2/3;
+
+	blatttypeins (orig,arc,center,tip,blattansatz,rippenlaenge,stuetz1,stuetz2,stuetzw1,stuetzw2);
+
+enddef;
+
+beginchar(incr code,(xpart bbox)*u#,(ypart bbox)*u#,0);
+	defaultpoints;
+	blatteins(ll,right,center,ur);
+endchar;
+
+beginchar(incr code,(xpart bbox)*u#,(ypart bbox)*u#,0);
+	defaultpoints;
+	blattzwei(ll,right,center,ur);
+endchar;
+
+numeric wankel,blattwinkel,zweigansatz,zentrum;
+
+wankel = 30;
+blattwinkel = 10;
+zweigansatz = 1/6;
+zentrum = 3/4;
+
+beginchar(incr code,(xpart bbox)*u#,(ypart bbox)*u#,0);
+	defaultpoints;
+	pickup defaultpen;
+
+	path p;
+	p := z102{dir (180-wankel)} .. {dir (180 + wankel)}z101;
+	draw p;
+
+	z1 = point zweigansatz of p;
+
+	z20 = p intersectionpoint ((w/2,0) .. (w/2,h));
+	x2 = w/2; y2 = zentrum[y20,h];
+
+	z3 = (origin .. infinity[origin,dir(180-blattwinkel)]) shifted z1 intersectionpoint (ll -- ul -- ur);
+	blatteins(z1,direction zweigansatz of p,z2,z3);
+
+	buf:= currentpicture;
+
+	if mode = 1:
+		grid(32);
+	fi;
+endchar;
+
+beginchar(incr code,(xpart bbox)*u#,(ypart bbox)*u#,0);
+	defaultpoints;
+	currentpicture := buf reflectedabout (z101,z102);
+endchar;
+
+beginchar(incr code,(xpart bbox)*u#,(ypart bbox)*u#,0);
+	defaultpoints;
+	pickup defaultpen;
+
+	path p;
+	p := z102{dir (180-wankel)} .. {dir (180 + wankel)}z101;
+	draw p;
+
+	z1 = point zweigansatz of p;
+
+	z20 = p intersectionpoint ((w/2,0) .. (w/2,h));
+	x2 = w/2; y2 = zentrum[y20,h];
+
+	z3 = (origin .. infinity[origin,dir(180-blattwinkel)]) shifted z1 intersectionpoint (ll -- ul -- ur);
+	blattzwei(z1,direction zweigansatz of p,z2,z3);
+
+	buf:= currentpicture;
+
+	if mode = 1:
+		grid(32);
+	fi;
+endchar;
+
+beginchar(incr code,(xpart bbox)*u#,(ypart bbox)*u#,0);
+	defaultpoints;
+	currentpicture := buf reflectedabout (z101,z102);
+endchar;
+
+
+end
+
