@@ -1,4 +1,24 @@
 %
+\ifthenelse{\isundefined{\datainit}}{
+\newcommand{\datainit}[0]{}%
+\newcounter{numplayers}%
+\newcounter{spione}%
+\newcounter{general}%
+\newcounter{bomben}%
+\newcounter{fmufz}%
+\newcounter{futter}%
+\newcounter{tmp}%
+}{}%
+%
+\setcounter{numplayers}{\value{numplayersperteam}}%
+%
+\ifthenelse{\isodd{\value{numplayers}}}{
+\setcounter{tmp}{2}%
+}{
+\setcounter{tmp}{1}%
+}
+\forloop[1]{general}{0}{\value{general} < \value{tmp}}{%
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
@@ -16,8 +36,10 @@ Fahne\\
 }{
 }{
 }
+}%
 %
 %
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
 }{% eigener rang:
 Fahne
@@ -28,81 +50,89 @@ ergattern.  Sei auf der Hut!  Dich kann jeder schlagen!
 }{
 1 maximal
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 %
+%\setcounter{tmp}{(\value{numplayersperteam} - 2) / 7}%
+\setcounter{tmp}{(\value{numplayers}) / 10}%
+\forloop[1]{futter}{0}{\value{futter} < \value{tmp}}{%
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
 General\\
 Oberst\\
 Major\\
-Hauptmann\\
-Leutnant\\
 }{% eigener rang:
-Spion
+Hauptmann
 }{% schwaecher:
 Minör\\
-Unteroffizier\\
-Fahne\\
-}{
-Kann die Gefangenen im gegnerischen Lager befreien.
-}{
-2 mindestens
-}
-\strategocard{% staerker:
-Bombe\\
-Feldmarschall\\
-General\\
-Oberst\\
-Major\\
-Hauptmann\\
-Leutnant\\
-}{% eigener rang:
-Spion
-}{% schwaecher:
-Minör\\
-Unteroffizier\\
-Fahne\\
-}{
-Kann die Gefangenen im gegnerischen Lager befreien.
-}{
-2 mindestens
-}
-%
-\strategocard{% staerker:
-Minör\\
-}{% eigener rang:
-Bombe
-}{% schwaecher:
-Feldmarschall\\
-General\\
-Oberst\\
-Major\\
-Hauptmann\\
 Leutnant\\
 Spion\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{1:1 mit Minör}
-%
+}{evtl. nicht besetzen}
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
+Bombe\\
 Feldmarschall\\
 General\\
 Oberst\\
 Major\\
 Hauptmann\\
-Spion\\
+Minör\\
 }{% eigener rang:
-Minör
+Leutnant
 }{% schwaecher:
-Bombe\\
-Leutnant\\
+Spion\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{1:1 mit Bombe}
+}{evtl. nicht besetzen}
+}%
 %
-%
+\setcounter{tmp}{(\value{numplayers}) / 8}%
+\forloop[1]{futter}{0}{\value{futter} < \value{tmp}}{%
+\addtocounter{numplayers}{-1}%
+\strategocard{% staerker:
+Bombe\\
+Feldmarschall\\
+General\\
+}{% eigener rang:
+Oberst
+}{% schwaecher:
+Major\\
+Hauptmann\\
+Minör\\
+Leutnant\\
+Spion\\
+Unteroffizier\\
+Fahne\\
+}{% hinweise
+}{evtl. nicht besetzen}
+\addtocounter{numplayers}{-1}%
+\strategocard{% staerker:
+Bombe\\
+Feldmarschall\\
+General\\
+Oberst\\
+}{% eigener rang:
+Major
+}{% schwaecher:
+Hauptmann\\
+Minör\\
+Leutnant\\
+Spion\\
+Unteroffizier\\
+Fahne\\
+}{% hinweise
+}{evtl. nicht besetzen}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setcounter{tmp}{(\value{numplayersperteam} - 2) / 8}%
+\setcounter{tmp}{(\value{numplayers}) / 6}%
+\forloop[1]{fmufz}{0}{\value{fmufz} < \value{tmp}}{%
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
 Bombe\\
 General\\
@@ -120,6 +150,7 @@ Fahne\\
 }{% hinweise
 }{1:1 mit Feldmarschall}
 %
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
 Bombe\\
 Unteroffizier\\
@@ -136,57 +167,54 @@ Spion\\
 Fahne\\
 }{% hinweise
 }{1:1 mit Unteroffizier}
+}
 %
 %
-%
+%\setcounter{tmp}{(\value{numplayersperteam} - 2) / 9}%
+\setcounter{tmp}{(\value{numplayers}) / 4}%
+\forloop[1]{bomben}{0}{\value{bomben} < \value{tmp}}{%
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
-Bombe\\
-Feldmarschall\\
-General\\
-}{% eigener rang:
-Oberst
-}{% schwaecher:
-Major\\
-Hauptmann\\
 Minör\\
-Leutnant\\
-Spion\\
-Unteroffizier\\
-Fahne\\
-}{% hinweise
-}{evtl. nicht besetzen}
-\strategocard{% staerker:
-Bombe\\
-Feldmarschall\\
-General\\
-Oberst\\
 }{% eigener rang:
-Major
+Bombe
 }{% schwaecher:
-Hauptmann\\
-Minör\\
-Leutnant\\
-Spion\\
-Unteroffizier\\
-Fahne\\
-}{% hinweise
-}{evtl. nicht besetzen}
-\strategocard{% staerker:
-Bombe\\
 Feldmarschall\\
 General\\
 Oberst\\
 Major\\
-}{% eigener rang:
-Hauptmann
-}{% schwaecher:
-Minör\\
+Hauptmann\\
 Leutnant\\
 Spion\\
 Unteroffizier\\
 Fahne\\
 }{% hinweise
-}{evtl. nicht besetzen}
+}{1:1 mit Minör}
+%
+\addtocounter{numplayers}{-1}%
+\strategocard{% staerker:
+Feldmarschall\\
+General\\
+Oberst\\
+Major\\
+Hauptmann\\
+Spion\\
+}{% eigener rang:
+Minör
+}{% schwaecher:
+Bombe\\
+Leutnant\\
+Unteroffizier\\
+Fahne\\
+}{% hinweise
+}{1:1 mit Bombe}
+}%
+%
+%
+%\setcounter{tmp}{(\value{numplayersperteam} - 2) / 10}%
+\setcounter{tmp}{(\value{numplayers}) / 2}%
+\forloop[1]{spione}{0}{\value{spione} < \value{tmp}}{%
+\addtocounter{numplayers}{-1}%
 \strategocard{% staerker:
 Bombe\\
 Feldmarschall\\
@@ -194,12 +222,37 @@ General\\
 Oberst\\
 Major\\
 Hauptmann\\
-Minör\\
+Leutnant\\
 }{% eigener rang:
-Leutnant
+Spion
 }{% schwaecher:
-Spion\\
+Minör\\
 Unteroffizier\\
 Fahne\\
-}{% hinweise
-}{evtl. nicht besetzen}
+}{
+Kann die Gefangenen im gegnerischen Lager befreien.
+}{
+2 mindestens
+}
+\addtocounter{numplayers}{-1}%
+\strategocard{% staerker:
+Bombe\\
+Feldmarschall\\
+General\\
+Oberst\\
+Major\\
+Hauptmann\\
+Leutnant\\
+}{% eigener rang:
+Spion
+}{% schwaecher:
+Minör\\
+Unteroffizier\\
+Fahne\\
+}{
+Kann die Gefangenen im gegnerischen Lager befreien.
+}{
+2 mindestens
+}
+}%
+%
