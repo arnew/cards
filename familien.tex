@@ -1,0 +1,129 @@
+%%%
+%
+% ticket.sty example file for flashcards for word learning
+%
+%%%%
+% use the corresponding paper size for your ticket definition
+\documentclass[a4paper,10pt,oneside]{letter}
+
+\usepackage[cutmark]{ticket}
+
+\unitlength=1mm
+\hoffset=0mm
+\voffset=0mm
+\ticketNumbers{2}{5}
+\ticketSize{65}{45}
+\ticketDistance{10}{10}
+
+
+\usepackage{graphicx}  % load misc stuff
+\usepackage{syntonly}  %to test without output
+
+\usepackage{yfonts}[1998/10/03]  % LaTeX interface to the blackletter (old german) fonts designed by Yannis Haralambous:  Gotisch, Schwabacher, Fraktur and the baroque initials. \textgoth{...}, \textswab{...},  \textfrak{...} and  \textinit{...} \gothfamily, \swabfamily, \frakfamily and \initfamily
+
+\usepackage{fancybox}
+\usepackage{rotating}
+
+\usepackage{ifthen}
+\usepackage{forloop}
+\usepackage{calc}
+
+\usepackage[utf8]{inputenc}
+
+\setlength{\unitlength}{1mm}%
+
+\renewcommand{\ticketdefault}{}
+
+\newcommand{\ticketdefaultback}{%
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{floor}{n}%
+\put(-5,-5){%
+\put(0,0){ABABABABABABABA}%
+\put(0,5){BABABABABABABAB}%
+\put(0,10){ABABABABABABABA}%
+\put(0,15){BABABABABABABAB}%
+\put(0,20){ABABABABABABABA}%
+\put(0,25){BABABABABABABAB}%
+\put(0,30){ABABABABABABABA}%
+\put(0,35){BABABABABABABAB}%
+\put(0,40){ABABABABABABABA}%
+\put(0,45){BABABABABABABAB}%
+\put(0,50){ABABABABABABABA}%
+}%
+}
+
+\newcommand{\familieback}[1]{%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+\ticket{}%
+}
+
+\newcommand{\familiefront}[1]{%
+\familiefrontticket{Großmutter}{#1}%
+\familiefrontticket{Großvater}{#1}%
+\familiefrontticket{Urgroßmutter}{#1}%
+\familiefrontticket{Urgroßvater}{#1}%
+\familiefrontticket{Mutter}{#1}%
+\familiefrontticket{Vater}{#1}%
+\familiefrontticket{Tochter}{#1}%
+\familiefrontticket{Sohn}{#1}%
+\familiefrontticket{Baby}{#1}%
+}%
+
+\newcommand{\familiefrontticket}[2]{\ticket{%
+\put(5,5){\framebox(55,35){%
+\begin{minipage}{55mm}%
+\begin{center}%
+\textswab{%
+\fontsize{24.88pt}{30pt}\selectfont#1\\%
+\fontsize{24.88pt}{30pt}\selectfont#2%
+}%
+\end{center}%
+\end{minipage}%
+}}%
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{floor}{n}%
+\multiput(-5,-5)(0,10){6}	{AB}%
+\multiput(-5,0)(0,10){5}	{BA}%
+%
+\multiput(60,-5)(0,10){6}	{AB}%
+\multiput(60,0)(0,10){5}	{BA}%
+%
+\put(5,0)	{ABABABABABA}%
+\put(5,-5)	{BABABABABAB}%
+%
+\put(5,40)	{BABABABABAB}%
+\put(5,45)	{ABABABABABA}%
+}}%
+
+\begin{document}
+\newcommand{\familie}[1]{\familiefront{#1}}
+\familie{Schmitt}
+\familie{Schmidt}
+\familie{Schmitd}
+\familie{Schmit}
+\familie{Meier}
+\familie{Meyer}
+\familie{Maier}
+\familie{Meijer}
+
+\backside%
+\oddsidemargin=1in%
+
+\renewcommand{\familie}[1]{\familieback{#1}}
+\renewcommand{\ticketdefault}{\ticketdefaultback}
+\familie{Schmitt}
+\familie{Schmidt}
+\familie{Schmitd}
+\familie{Schmit}
+\familie{Meier}
+\familie{Meyer}
+\familie{Maier}
+\familie{Meijer}
+\end{document}
