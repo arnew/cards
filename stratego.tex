@@ -4,12 +4,12 @@
 %
 %%%%
 % use the corresponding paper size for your ticket definition
-\documentclass[a4paper,10pt,oneside]{letter}
+\documentclass[a4paper,10pt,oneside,BCOR=0cm]{scrlttr2}
 
-
-\usepackage[stratego]{ticket}
+\usepackage[stratego,boxed]{ticket}
+%\usepackage[top=1cm,left=1cm]{geometry}
 \usepackage{graphicx}  % load misc stuff
-\usepackage{syntonly}  %to test without output
+%\usepackage{syntonly}  %to test without output
 
 \usepackage{yfonts}[1998/10/03]  % LaTeX interface to the blackletter (old german) fonts designed by Yannis Haralambous:  Gotisch, Schwabacher, Fraktur and the baroque initials. \textgoth{...}, \textswab{...},  \textfrak{...} and  \textinit{...} \gothfamily, \swabfamily, \frakfamily and \initfamily
 
@@ -126,7 +126,7 @@
 \input{strategodata}
 
 \backside%
-\oddsidemargin=5.5mm
+%\oddsidemargin=5.5mm
 \renewcommand{\strategocard}[5]{\strategocardback{#1}{#2}{#3}{#4}{#5}}
 \renewcommand{\ticketdefault}{\ticketdefaultback}
 \input{strategodata}
