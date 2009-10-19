@@ -6,14 +6,14 @@
 % use the corresponding paper size for your ticket definition
 \documentclass[a4paper,10pt,oneside]{letter}
 
-\usepackage[]{ticket}
 
+\usepackage[stratego]{ticket}
 \unitlength=1mm
-\hoffset=0mm
-\voffset=0mm
+\hoffset=-5.4mm
+\voffset=-9mm
 \ticketNumbers{2}{5}
 \ticketSize{65}{45}
-\ticketDistance{10}{10}
+\ticketDistance{40}{10}
 
 
 \usepackage{graphicx}  % load misc stuff
@@ -113,8 +113,8 @@
 \familie{Maier}
 \familie{Meijer}
 
+%\oddsidemargin=0in%
 \backside%
-\oddsidemargin=1in%
 
 \renewcommand{\familie}[1]{\familieback{#1}}
 \renewcommand{\ticketdefault}{\ticketdefaultback}
