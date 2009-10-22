@@ -13,9 +13,9 @@
 %\voffset=-29mm
 \hoffset=-15.4mm
 \voffset=-9mm
-\ticketNumbers{2}{2}
+\ticketNumbers{2}{4}
 \ticketSize{90}{55}
-\ticketDistance{10}{20}
+\ticketDistance{10}{10}
 
 
 \usepackage{graphicx}  % load misc stuff
@@ -34,7 +34,15 @@
 
 \setlength{\unitlength}{1mm}%
 
-\renewcommand{\ticketdefault}{}
+\renewcommand{\ticketdefault}{
+\put(0,0){
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{maeander}{n}%
+\multiput(0,5)(0,5){9}	{C}%
+\multiput(85,5)(0,5){9}	{C}%
+\put(0,0)	{NAAAAAAAAAAAAAAAAS}%
+\put(0,50)	{KAAAAAAAAAAAAAAAAF}%
+}}
 
 \newcommand{\ticketdefaultback}{%
 \put(5,5){\framebox(80,45){}}%
@@ -55,78 +63,31 @@
 }%
 }
 
-\newcommand{\familieback}[1]{%
-\ticket{}%
-\ticket{}%
-\ticket{}%
-\ticket{}%
-\ticket{}%
-\ticket{}%
-\ticket{}%
-\ticket{}%
-\ticket{}%
+\newcommand{\cardback}[2]{%
 }
 
-\newcommand{\familiefront}[1]{%
-\familiefrontticket{Großmutter}{#1}%
-\familiefrontticket{Großvater}{#1}%
-\familiefrontticket{Urgroßmutter}{#1}%
-\familiefrontticket{Urgroßvater}{#1}%
-\familiefrontticket{Mutter}{#1}%
-\familiefrontticket{Vater}{#1}%
-\familiefrontticket{Tochter}{#1}%
-\familiefrontticket{Sohn}{#1}%
-\familiefrontticket{Baby}{#1}%
+\newcommand{\cardfront}[2]{%
 }%
 
 \newcommand{\familiefrontticket}[2]{\ticket{%
-\put(5,5){\framebox(55,35){%
-\begin{minipage}{55mm}%
-\begin{center}%
-\textswab{%
-\fontsize{24.88pt}{30pt}\selectfont#1\\%
-\fontsize{24.88pt}{30pt}\selectfont#2%
-}%
-\end{center}%
-\end{minipage}%
-}}%
-\fontsize{5mm}{5mm}%
-\usefont{U}{ornamente}{floor}{n}%
-\multiput(-5,-5)(0,10){6}	{AB}%
-\multiput(-5,0)(0,10){5}	{BA}%
-%
-\multiput(60,-5)(0,10){6}	{AB}%
-\multiput(60,0)(0,10){5}	{BA}%
-%
-\put(5,0)	{ABABABABABA}%
-\put(5,-5)	{BABABABABAB}%
-%
-\put(5,40)	{BABABABABAB}%
-\put(5,45)	{ABABABABABA}%
+%\put(5,5){%
+%\begin{minipage}{55mm}%
+%\begin{center}%
+%\textswab{%
+%\fontsize{24.88pt}{30pt}\selectfont#1\\%
+%\fontsize{24.88pt}{30pt}\selectfont#2%
+%}%
+%\end{center}%
+%\end{minipage}%
+%}}%
 }}%
 
 \begin{document}
-\newcommand{\familie}[1]{\familiefront{#1}}
-\familie{Schmitt}
-\familie{Schmidt}
-\familie{Schmitd}
-\familie{Schmit}
-\familie{Meier}
-\familie{Meyer}
-\familie{Maier}
-\familie{Meijer}
+\newcommand{\card}[2]{\cardfront{#1}{#2}}
 
 %\oddsidemargin=0in%
 \backside%
 
-\renewcommand{\familie}[1]{\familieback{#1}}
+\renewcommand{\card}[2]{\cardback{#1}{#2}}
 \renewcommand{\ticketdefault}{\ticketdefaultback}
-\familie{Schmitt}
-\familie{Schmidt}
-\familie{Schmitd}
-\familie{Schmit}
-\familie{Meier}
-\familie{Meyer}
-\familie{Maier}
-\familie{Meijer}
 \end{document}
