@@ -1,0 +1,120 @@
+%%%
+%
+% ticket.sty example file for flashcards for word learning
+%
+%%%%
+% use the corresponding paper size for your ticket definition
+\documentclass[a4paper,10pt,oneside]{letter}
+
+
+\usepackage[stratego]{ticket}
+\unitlength=1mm
+%\hoffset=-25.4mm
+%\voffset=-29mm
+\hoffset=-15.4mm
+\voffset=-9mm
+\ticketNumbers{2}{4}
+\ticketSize{90}{55}
+\ticketDistance{10}{10}
+
+
+\usepackage{graphicx}  % load misc stuff
+\usepackage{syntonly}  %to test without output
+
+\usepackage{yfonts}[1998/10/03]  % LaTeX interface to the blackletter (old german) fonts designed by Yannis Haralambous:  Gotisch, Schwabacher, Fraktur and the baroque initials. \textgoth{...}, \textswab{...},  \textfrak{...} and  \textinit{...} \gothfamily, \swabfamily, \frakfamily and \initfamily
+
+\usepackage{fancybox}
+\usepackage{rotating}
+
+\usepackage{ifthen}
+\usepackage{forloop}
+\usepackage{calc}
+
+\usepackage[utf8]{inputenc}
+
+\setlength{\unitlength}{1mm}%
+
+\renewcommand{\ticketdefault}{
+\put(0,0){
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{maeander}{n}%
+\multiput(0,5)(0,5){9}	{C}%
+\multiput(85,5)(0,5){9}	{C}%
+\put(0,0)	{NAAAAAAAAAAAAAAAAS}%
+\put(0,50)	{KAAAAAAAAAAAAAAAAF}%
+}}
+
+\newcommand{\ticketdefaultback}{%
+\put(5,5){\framebox(80,45){}}%
+\put(0,0){%
+\fontsize{5mm}{5mm}%
+\usefont{U}{ornamente}{floor}{n}%
+\multiput(-5,-5)(0,10){7}	{AB}%
+\multiput(-5,0)(0,10){6}	{BA}%
+%
+\multiput(85,-5)(0,10){7}	{AB}%
+\multiput(85,0)(0,10){6}	{BA}%
+%
+\put(5,0)	{BABABABABABABABA}%
+\put(5,-5)	{ABABABABABABABAB}%
+%
+\put(5,50)	{BABABABABABABABA}%
+\put(5,55)	{ABABABABABABABAB}%
+}%
+}
+
+\newcommand{\cardback}[1]{%
+\ticket{
+\put(5,5){
+\makebox(80,45){
+\begin{minipage}{80mm}
+\begin{center}
+{\Huge\textsf{Opfer}}\\
+\vspace{1cm}
+\underline{\hspace{5cm}}
+\end{center}
+\end{minipage}
+}}}}%
+
+\newcommand{\cardfront}[1]{%
+\ticket{
+\put(5,5){
+\makebox(80,45){
+\begin{minipage}{80mm}
+\begin{center}
+{\Huge{}#1}
+\end{center}
+\end{minipage}
+}}}}%
+
+\begin{document}
+\cardfront{John Doe}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+\cardfront{\vspace{5cm}}
+%
+\backside%
+\oddsidemargin=-5mm%
+\renewcommand{\ticketdefault}{\ticketdefaultback}
+%
+\cardback{John Doe}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\cardback{\vspace{5cm}}
+\end{document}

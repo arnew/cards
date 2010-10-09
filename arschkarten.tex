@@ -7,7 +7,7 @@
 \documentclass[a4paper,10pt,oneside]{letter}
 
 
-\usepackage[stratego,cutmark]{ticket}
+\usepackage[stratego]{ticket}
 \unitlength=1mm
 %\hoffset=-25.4mm
 %\voffset=-29mm
@@ -63,31 +63,180 @@
 }%
 }
 
-\newcommand{\cardback}[2]{%
-}
+\newcommand{\cardback}[3]{%
+\ticket{
+\put(5,5){
+\makebox(80,45){
+\begin{minipage}{80mm}
+\begin{center}
+{\Huge\textsf{Arschkarte}}\\
+\vspace{1cm}
+\underline{\hspace{5cm}}
+\end{center}
+\end{minipage}
+}}}}%
 
-\newcommand{\cardfront}[2]{%
-}%
-
-\newcommand{\familiefrontticket}[2]{\ticket{%
-%\put(5,5){%
-%\begin{minipage}{55mm}%
-%\begin{center}%
-%\textswab{%
-%\fontsize{24.88pt}{30pt}\selectfont#1\\%
-%\fontsize{24.88pt}{30pt}\selectfont#2%
-%}%
-%\end{center}%
-%\end{minipage}%
-%}}%
-}}%
+\newcommand{\cardfront}[3]{%
+\ticket{
+\put(5,5){
+\makebox(80,45){
+\begin{minipage}{80mm}
+\begin{center}
+{\Huge{}Was: \emph{#1}\\}
+{\Large{}Wann: \emph{#2}\\}
+{\large{}#3}
+\end{center}
+\end{minipage}
+}}}}%
 
 \begin{document}
-\newcommand{\card}[2]{\cardfront{#1}{#2}}
-
-%\oddsidemargin=0in%
+\cardfront{Abwasch}{Freitag Mittag}{A}
+\cardfront{Abwasch}{Freitag Mittag}{A}
+\cardfront{Abwasch}{Freitag Mittag}{B}
+\cardfront{Abwasch}{Freitag Mittag}{B}
+\cardfront{Abwasch}{Freitag Mittag}{A}
+\cardfront{Abwasch}{Freitag Mittag}{A}
+\cardfront{Abwasch}{Freitag Mittag}{B}
+\cardfront{Abwasch}{Freitag Mittag}{B}
+\cardfront{Abwasch}{Samstag Morgen}{A}
+\cardfront{Abwasch}{Samstag Morgen}{A}
+\cardfront{Abwasch}{Samstag Morgen}{B}
+\cardfront{Abwasch}{Samstag Morgen}{B}
+\cardfront{Abwasch}{Samstag Mittag}{A}
+\cardfront{Abwasch}{Samstag Mittag}{A}
+\cardfront{Abwasch}{Samstag Mittag}{B}
+\cardfront{Abwasch}{Samstag Mittag}{B}
+\cardfront{Abwasch}{Samstag Mittag}{A}
+\cardfront{Abwasch}{Samstag Mittag}{A}
+\cardfront{Abwasch}{Samstag Mittag}{B}
+\cardfront{Abwasch}{Samstag Mittag}{B}
+\cardfront{Abwasch}{Sonntag Morgen}{A}
+\cardfront{Abwasch}{Sonntag Morgen}{A}
+\cardfront{Abwasch}{Sonntag Morgen}{B}
+\cardfront{Abwasch}{Sonntag Morgen}{B}
+%
+\cardfront{Kloputzen}{Ende}{Damen A}
+\cardfront{Kloputzen}{Ende}{Damen A}
+\cardfront{Kloputzen}{Ende}{Herren A}
+\cardfront{Kloputzen}{Ende}{Herren A}
+\cardfront{Kloputzen}{Ende}{Damen B}
+\cardfront{Kloputzen}{Ende}{Damen B}
+\cardfront{Kloputzen}{Ende}{Herren B}
+\cardfront{Kloputzen}{Ende}{Herren B}
+\cardfront{Kloputzen}{Ende}{Damen C}
+\cardfront{Kloputzen}{Ende}{Damen C}
+\cardfront{Kloputzen}{Ende}{Herren C}
+\cardfront{Kloputzen}{Ende}{Herren C}
+%
+\cardfront{Putzen}{Ende}{Gemeinschaftsraum}
+\cardfront{Putzen}{Ende}{Gemeinschaftsraum}
+\cardfront{Putzen}{Ende}{Gemeinschaftsraum}
+\cardfront{Putzen}{Ende}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Samstag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Samstag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Samstag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Samstag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Sonntag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Sonntag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Sonntag}{Gemeinschaftsraum}
+\cardfront{Hausschuhwache}{Sonntag}{Gemeinschaftsraum}
+%
+\cardfront{Putzen}{Ende}{Speisesaal}
+\cardfront{Putzen}{Ende}{Speisesaal}
+\cardfront{Putzen}{Ende}{Küche}
+\cardfront{Putzen}{Ende}{Küche}
+%
+\cardfront{Müllsammeln}{Ende}{}
+\cardfront{Müllsammeln}{Ende}{}
+\cardfront{Müllsammeln}{Ende}{}
+\cardfront{Müllsammeln}{Ende}{}
+%
+\cardfront{Grillschrubben}{Ende}{}
+%
+\cardfront{Joker}{dann}{A}
+\cardfront{Joker}{dann}{A}
+\cardfront{Joker}{dann}{B}
+\cardfront{Joker}{dann}{B}
+\cardfront{Joker}{dann}{C}
+\cardfront{Joker}{dann}{C}
+\cardfront{Joker}{dann}{D}
+\cardfront{Joker}{dann}{D}
+%
 \backside%
-
-\renewcommand{\card}[2]{\cardback{#1}{#2}}
+\oddsidemargin=-5mm%
 \renewcommand{\ticketdefault}{\ticketdefaultback}
+\cardback{Abwasch}{Freitag Mittag}{A}
+\cardback{Abwasch}{Freitag Mittag}{A}
+\cardback{Abwasch}{Freitag Mittag}{B}
+\cardback{Abwasch}{Freitag Mittag}{B}
+\cardback{Abwasch}{Freitag Mittag}{A}
+\cardback{Abwasch}{Freitag Mittag}{A}
+\cardback{Abwasch}{Freitag Mittag}{B}
+\cardback{Abwasch}{Freitag Mittag}{B}
+\cardback{Abwasch}{Samstag Morgen}{A}
+\cardback{Abwasch}{Samstag Morgen}{A}
+\cardback{Abwasch}{Samstag Morgen}{B}
+\cardback{Abwasch}{Samstag Morgen}{B}
+\cardback{Abwasch}{Samstag Mittag}{A}
+\cardback{Abwasch}{Samstag Mittag}{A}
+\cardback{Abwasch}{Samstag Mittag}{B}
+\cardback{Abwasch}{Samstag Mittag}{B}
+\cardback{Abwasch}{Samstag Mittag}{A}
+\cardback{Abwasch}{Samstag Mittag}{A}
+\cardback{Abwasch}{Samstag Mittag}{B}
+\cardback{Abwasch}{Samstag Mittag}{B}
+\cardback{Abwasch}{Sonntag Morgen}{A}
+\cardback{Abwasch}{Sonntag Morgen}{A}
+\cardback{Abwasch}{Sonntag Morgen}{B}
+\cardback{Abwasch}{Sonntag Morgen}{B}
+%
+\cardback{Kloputzen}{Ende}{Damen A}
+\cardback{Kloputzen}{Ende}{Damen A}
+\cardback{Kloputzen}{Ende}{Herren A}
+\cardback{Kloputzen}{Ende}{Herren A}
+\cardback{Kloputzen}{Ende}{Damen B}
+\cardback{Kloputzen}{Ende}{Damen B}
+\cardback{Kloputzen}{Ende}{Herren B}
+\cardback{Kloputzen}{Ende}{Herren B}
+\cardback{Kloputzen}{Ende}{Damen C}
+\cardback{Kloputzen}{Ende}{Damen C}
+\cardback{Kloputzen}{Ende}{Herren C}
+\cardback{Kloputzen}{Ende}{Herren C}
+%
+\cardback{Gemeinschaftsraum}{Ende}{Putzen}
+\cardback{Gemeinschaftsraum}{Ende}{Putzen}
+\cardback{Gemeinschaftsraum}{Ende}{Putzen}
+\cardback{Gemeinschaftsraum}{Ende}{Putzen}
+%
+\cardback{Gemeinschaftsraum}{Samstag}{Hausschuhwache}
+\cardback{Gemeinschaftsraum}{Samstag}{Hausschuhwache}
+\cardback{Gemeinschaftsraum}{Samstag}{Hausschuhwache}
+\cardback{Gemeinschaftsraum}{Samstag}{Hausschuhwache}
+%
+\cardback{Gemeinschaftsraum}{Freitag}{Hausschuhwache}
+\cardback{Gemeinschaftsraum}{Freitag}{Hausschuhwache}
+\cardback{Gemeinschaftsraum}{Freitag}{Hausschuhwache}
+\cardback{Gemeinschaftsraum}{Freitag}{Hausschuhwache}
+%
+\cardback{Speisesaal}{Ende}{Putzen}
+\cardback{Speisesaal}{Ende}{Putzen}
+\cardback{Kueche}{Ende}{Putzen}
+\cardback{Kueche}{Ende}{Putzen}
+%
+\cardback{Müllsammeln}{Ende}{}
+\cardback{Müllsammeln}{Ende}{}
+\cardback{Müllsammeln}{Ende}{}
+\cardback{Müllsammeln}{Ende}{}
+%
+\cardback{Grillschrubben}{Ende}{}
+%
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+\cardback{Joker}{dann}{}
+%
 \end{document}
